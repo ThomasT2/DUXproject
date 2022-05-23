@@ -1,0 +1,80 @@
+<!-----------------------
+      Collection view -
+      HTML and Handlebars
+     ------------------------>
+<div class="container">
+{{# if products }}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h1 class="big-title">The Big Collection</h1>
+            <ul class="list-group">
+                {{# each products }}
+                <li class="list-group-item">
+                    <img id="bigPoster" class="card-img-top" src="{{ this.imagePath }}" alt="Big movie poster">
+                    <h4 class="bold">{{ this.review.title }}</h4>
+                    <p class="card-text" id="review">{{ this.description }}</p>
+                    <p class="rating-text"><button class="dotReview">{{ this.rating }}</button></p>
+                    <u><p id="quantity">Total quantity:</u><strong> {{ this.quantity }} </strong></p>
+                    <hr>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-xs dropdown-toggle bold" id="actionButton" type="button" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a id="buttonDownload" href="#/">Download the review</a></li>
+                            <li><a id="reduce" href="/reduce/{{this.review._id}}">Reduce the number of reviews</a></li>
+                            <li><a id="remove" href="/remove/{{this.review._id}}">Remove all reviews from the Collection</a></li>
+                        </ul>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            <br>
+            <br>
+            <form action="/main/collection" method="post">
+                <div class="btn-group">
+                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                    <button id="add-profile" type="submit" class="btn btn-success bold">Add to Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr class="finalHR">
+{{ else }}
+    <div id="noFooter" class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2 class="big-title">No reviews in the collection!</h2>
+            <p class="normal-text">But do not let that stop you. Here are some tips on how to get you started with your new amazing collection:</p>
+            <div class="noRow">
+                <div class="column-empty">
+                    <a href="/"><img class="profileIMG" src="../images/do-know.png"></a>
+                </div>
+                <div class="column-empty">
+                    <a href="/main/help"><img class="profileIMG" src="../images/donot-know.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+</div>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    function download(filename, reviewText){
+        var element = document.createElement('a');
+        element.style.display = 'none';
+
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(reviewText));
+        element.setAttribute('download', filename);
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
+    document.getElementById('buttonDownload').addEventListener('click', function (){
+        var reviewText = document.getElementById('review').textContent;
+        var filename = 'review.txt';
+
+        download(filename, reviewText);
+    }, false);
+</script>
+
+

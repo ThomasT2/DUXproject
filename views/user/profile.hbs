@@ -1,0 +1,55 @@
+<!-----------------------
+      Profile view -
+      HTML and Handlebars
+     ------------------------>
+<div class="container">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="big-title">User profile</h1>
+        <hr class="spaceBar">
+        <p class="normal-text">
+            Welcome to your Profile! Here you can view all your selections. Browse through them and make sure that they are correct. Also, do you know that
+            we have many partners so be sure to check them out and support their sites and channels.
+        </p>
+        <p class="normal-text">
+            Mauris vehicula id arcu sit amet pretium. Nulla facilisi. Mauris rutrum, mauris a vehicula sollicitudin, nisi nunc pulvinar magna, a congue augue nunc sed felis.
+            Nam ornare tincidunt erat ac elementum. Cras eu pharetra diam. Fusce tortor massa, gravida nec mattis ac, bibendum quis est.
+            Suspendisse potenti. Donec in consequat dolor. Vestibulum quis auctor leo, ornare efficitur magna. Suspendisse scelerisque augue quis scelerisque faucibus.
+        </p>
+        <br>
+        <div class="profileRow">
+        <div class="column">
+            <img class="profileIMG" src="../images/director.png">
+        </div>
+        <div class="column">
+            <img class="profileIMG" src="../images/rating.png">
+        </div>
+        <div class="column">
+            <img class="profileIMG" src="../images/funmovie.png">
+        </div>
+        </div>
+        <h2 class="big-title">My Review Selections!</h2>
+        <hr class="spaceBar">
+        {{# each selections }}
+            <div class="panel panel-default">
+                <u><h6 id="selectionNumber"> from the Collection:</h6></u>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {{# each this.reviews }}
+                            <li class="list-group-item" id="profileBlocks">
+                                <span id="textProfile">You have {{ this.quantity }} review(s) of this film. </span><span id="textProfile2"><strong>{{ this.review.title }}</strong> | {{ this.rating }} stars</span>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <hr class="spaceBar">
+        {{/each}}
+        <div class="panel-footer">
+            <h4 class="big-title">Keep adding more selections to your profile!</h4>
+        </div>
+    </div>
+</div>
+</div>
+<hr class="finalHR">
+

@@ -1,0 +1,28 @@
+<!-----------------------
+      Index main view -
+      HTML and Handlebars
+     ------------------------>
+{{# each products }}
+    <div class="container" id="mainPage">
+    <div class="row">
+        {{# each this }}
+            <div class="card">
+                <img class="card-img-top" src="{{ this.imagePath }}" alt="Movie Poster card image">
+                <div class="card-body">
+                    <h5 class="card-title" id="title">{{ this.title }}</h5>
+                    <p class="card-text">{{ this.description }}</p>
+                    <p class="rating-text"><button class="dotReview"> {{ this.rating }} </button></p>
+                    <hr>
+                    <a href="/add-to-collection/{{this._id}}" class="btn btn-primary" id="add-collection">Add to Collection</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    </div>
+{{/each}}
+    <div class="w3-container" id="moreButtonRoom">
+        <div class="centerMore">
+         <p><button id="morePics">Load more Collage items</button></p>
+        </div>
+    </div>
+<hr class="finalHR">
