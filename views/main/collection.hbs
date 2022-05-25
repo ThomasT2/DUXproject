@@ -41,7 +41,7 @@
 {{ else }}
     <div id="noFooter" class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <h2 class="big-title">No reviews in the collection!</h2>
+            <h2 class="big-title">There are no items in your Collage collection</h2>
             <p class="normal-text">But do not let that stop you. Here are some tips on how to get you started with your new amazing collection:</p>
             <div class="noRow">
                 <div class="column-empty">
@@ -50,14 +50,33 @@
                 <div class="column-empty">
                     <a href="/main/help"><img class="profileIMG" src="../images/donot-know.png"></a>
                 </div>
+                <h3>You do not have to add items right now, take a moment here to think and relax</h3>
             </div>
         </div>
     </div>
+    <script>
+        var audio = new Audio('/assets/timeWaves.mp3');
+        setTimeout(function (){
+                audio.loop = true;
+                audio.load();
+                audio.play();
+        }, 3000);
+    </script>
 {{/if}}
 </div>
 
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
+
+    /*
+    var audio = new Audio('/assets/timeWaves.mp3');
+    window.onload = function() {
+        audio.loop = true;
+        audio.load();
+        audio.play();
+    }
+     */
+
     function download(filename, reviewText){
         var element = document.createElement('a');
         element.style.display = 'none';

@@ -28,10 +28,16 @@ router.get('/', function(req, res, next) {
     }).lean();
 });
 
+/* -- Get the DUX related pages -- */
 router.get('/main/help', function (req,res,next) { //.use
     res.render('main/help');
 });
 
+router.get('/main/slideshow', function (req,res,next) { //.use
+    res.render('main/slideshow');
+});
+
+// Add the items to the Collection
 router.get('/add-to-collection/:id', function (req,res,next){
     var reviewId = req.params.id;
     var portfolio = new Collection(req.session.portfolio ? req.session.portfolio : {});
