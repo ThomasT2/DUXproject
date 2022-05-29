@@ -9,6 +9,7 @@ module.exports = function Collection(oldCollection){
 
     this.reviews = oldCollection.reviews || {};
     this.totalQuantity = oldCollection.totalQuantity || 0;
+    this.totalScore = oldCollection.totalScore || 0;
 
     // Add the attributes of the review, including quantity.
     this.add = function (review, id) {
@@ -17,10 +18,11 @@ module.exports = function Collection(oldCollection){
             storedReview = this.reviews[id] = {review: review, quantity: 0, rating: 0, description: this.description, imagePath: this.imagePath};
         }
         storedReview.quantity++;
-        storedReview.rating = storedReview.review.rating;
+        storedReview.rating = storedReview.review.rating * storedReview.quantity;
         storedReview.description = storedReview.review.description;
         storedReview.imagePath = storedReview.review.imagePath;
         this.totalQuantity++;
+        this.totalScore += storedReview.rating;
 
     };
 

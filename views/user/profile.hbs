@@ -2,6 +2,7 @@
       Profile view -
       HTML and Handlebars
      ------------------------>
+<body class="helpColor">
 <div class="container">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -19,16 +20,16 @@
         <br>
         <div class="profileRow">
         <div class="column">
-            <img class="profileIMG" src="../images/director.png">
+            <img class="profileIMG" src="../images/step1.png">
         </div>
         <div class="column">
-            <img class="profileIMG" src="../images/rating.png">
+            <img class="profileIMG" src="../images/step2.png">
         </div>
         <div class="column">
-            <img class="profileIMG" src="../images/funmovie.png">
+            <img class="profileIMG" src="../images/step3.png">
         </div>
         </div>
-        <h2 class="big-title">My Review Selections!</h2>
+        <h2 class="big-title">My Collage Selections!</h2>
         <hr class="spaceBar">
         {{# each selections }}
             <div class="panel panel-default">
@@ -37,7 +38,7 @@
                     <ul class="list-group">
                         {{# each this.reviews }}
                             <li class="list-group-item" id="profileBlocks">
-                                <span id="textProfile">You have {{ this.quantity }} review(s) of this film. </span><span id="textProfile2"><strong>{{ this.review.title }}</strong> | {{ this.rating }} stars</span>
+                                <span id="textProfile">You have {{ this.quantity }} of this Collage item. </span><span id="textProfile2"><strong>{{ this.review.title }}</strong> | {{ this.rating }} value</span>
                             </li>
                         {{/each}}
                     </ul>
@@ -52,4 +53,5 @@
 </div>
 </div>
 <hr class="finalHR">
+</body>
 

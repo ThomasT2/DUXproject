@@ -2,9 +2,10 @@
       Collection view -
       HTML and Handlebars
      ------------------------>
+<body class="helpColor">
 <div class="container">
 {{# if products }}
-    <div class="row">
+    <div class="row" id="bigBoy">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
             <h1 class="big-title">The Big Collection</h1>
             <ul class="list-group">
@@ -13,13 +14,13 @@
                     <img id="bigPoster" class="card-img-top" src="{{ this.imagePath }}" alt="Big movie poster">
                     <h4 class="bold">{{ this.review.title }}</h4>
                     <p class="card-text" id="review">{{ this.description }}</p>
-                    <p class="rating-text"><button class="dotReview">{{ this.rating }}</button></p>
+                    <p class="rating-text"><button class="btn btn-primary"  id="dotReview">Image value: {{ this.rating }}</button></p>
                     <u><p id="quantity">Total quantity:</u><strong> {{ this.quantity }} </strong></p>
                     <hr>
                     <div class="btn-group">
                         <button class="btn btn-primary btn-xs dropdown-toggle bold" id="actionButton" type="button" data-toggle="dropdown">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a id="buttonDownload" href="#/">Download the review</a></li>
+                            <li><a id="buttonDownload" href="#" onclick="myLink()">Information about this item.</a></li>
                             <li><a id="reduce" href="/reduce/{{this.review._id}}">Reduce the number of reviews</a></li>
                             <li><a id="remove" href="/remove/{{this.review._id}}">Remove all reviews from the Collection</a></li>
                         </ul>
@@ -39,21 +40,19 @@
     </div>
     <hr class="finalHR">
 {{ else }}
+<body id="waves">
     <div id="noFooter" class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <h2 class="big-title">There are no items in your Collage collection</h2>
+            <h2 class="big-title">There are no items in your awesome Collage collection</h2>
             <p class="normal-text">But do not let that stop you. Here are some tips on how to get you started with your new amazing collection:</p>
             <div class="noRow">
-                <div class="column-empty">
-                    <a href="/"><img class="profileIMG" src="../images/do-know.png"></a>
+                <div id="relax">
+                    <img src="../images/relax.png" style="width:100%">
                 </div>
-                <div class="column-empty">
-                    <a href="/main/help"><img class="profileIMG" src="../images/donot-know.png"></a>
-                </div>
-                <h3>You do not have to add items right now, take a moment here to think and relax</h3>
             </div>
         </div>
     </div>
+</body>
     <script>
         var audio = new Audio('/assets/timeWaves.mp3');
         setTimeout(function (){
@@ -64,9 +63,16 @@
     </script>
 {{/if}}
 </div>
+</body>
 
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
+
+    function myLink() {
+        setTimeout(function (){
+            location.replace("https://piccollage.com/");
+        }, 3000);
+    }
 
     /*
     var audio = new Audio('/assets/timeWaves.mp3');
@@ -75,7 +81,6 @@
         audio.load();
         audio.play();
     }
-     */
 
     function download(filename, reviewText){
         var element = document.createElement('a');
@@ -94,6 +99,7 @@
 
         download(filename, reviewText);
     }, false);
+     */
 </script>
 
 

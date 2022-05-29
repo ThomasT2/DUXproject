@@ -33,12 +33,24 @@ router.get('/main/help', function (req,res,next) { //.use
     res.render('main/help');
 });
 
-router.get('/main/slideshow', function (req,res,next) { //.use
+router.get('/main/slideshow', isUserLoggedInCollection, function (req,res,next) { //.use
     res.render('main/slideshow');
 });
 
+router.get('/main/delay', isUserLoggedInCollection, function (req,res,next) { //.use
+    res.render('main/delay');
+});
+
+router.get('/main/time', isUserLoggedInCollection, function (req,res,next) { //.use
+    res.render('main/time');
+});
+
+router.get('/main/sorry', isUserLoggedInCollection, function (req,res,next) { //.use
+    res.render('main/sorry');
+});
+
 // Add the items to the Collection
-router.get('/add-to-collection/:id', function (req,res,next){
+router.get('/add-to-collection/:id', isUserLoggedInCollection, function (req,res,next){
     var reviewId = req.params.id;
     var portfolio = new Collection(req.session.portfolio ? req.session.portfolio : {});
 

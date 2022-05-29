@@ -1,0 +1,55 @@
+
+<!-----------------------
+           Delay view
+     ------------------------>
+<body class="helpColor">
+<div class="container">
+    <div>
+        <h1 class="big-title">The Collage items are being loaded</h1>
+        <h4 class="normal-text">When the circle has turned blue X couple of times, you will be redirected. In the meantime,
+        we have selected some of your memories from the past that you can view.</h4>
+        <hr class="spaceProfile">
+    </div>
+    <div id="moveArea">
+        <div id="loopDiv">
+        </div>
+    </div>
+    <hr class="spaceProfile">
+    <div class="hoverPics">
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia1.png">
+        </div>
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia2.png">
+        </div>
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia3.png">
+        </div>
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia4.png">
+        </div>
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia5.png">
+        </div>
+        <div class="column">
+            <img class="memoryFade" id="memoryTop" src="../images/nostalgia6.png">
+        </div>
+</div>
+</div>
+<hr class="finalHR">
+</body>
+
+<script>
+
+    var audio = new Audio('/assets/nostalgia.mp3');
+    setTimeout(function (){
+        audio.loop = true;
+        audio.load();
+        audio.play();
+    }, 1000);
+
+    setTimeout(function (){
+        location.replace("/main/sorry");
+    }, 10000*10);
+
+</script>
